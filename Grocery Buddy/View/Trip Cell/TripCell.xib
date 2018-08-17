@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TripCell" customModule="Grocery_Buddy" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="152" id="dSw-a9-OFR" customClass="TripCell" customModule="Grocery_Buddy" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="461" height="152"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dSw-a9-OFR" id="xRD-lZ-10H">
+                <rect key="frame" x="0.0" y="0.0" width="461" height="151.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNp-KP-iyE" userLabel="Date">
+                        <rect key="frame" x="20" y="61" width="61.5" height="29.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCc-Q6-oRh" userLabel="Cost">
+                        <rect key="frame" x="379.5" y="61" width="61.5" height="29.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hNp-KP-iyE" firstAttribute="centerY" secondItem="xRD-lZ-10H" secondAttribute="centerY" id="CvI-qt-s4j"/>
+                    <constraint firstItem="hNp-KP-iyE" firstAttribute="leading" secondItem="xRD-lZ-10H" secondAttribute="leadingMargin" id="P9f-ox-Np6"/>
+                    <constraint firstItem="JCc-Q6-oRh" firstAttribute="centerY" secondItem="xRD-lZ-10H" secondAttribute="centerY" id="c4V-gZ-V20"/>
+                    <constraint firstItem="JCc-Q6-oRh" firstAttribute="trailing" secondItem="xRD-lZ-10H" secondAttribute="trailingMargin" id="wSN-ht-EgG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="costLabel" destination="JCc-Q6-oRh" id="H9I-d1-oPc"/>
+                <outlet property="dateLabel" destination="hNp-KP-iyE" id="0i8-Ed-UHg"/>
+            </connections>
+            <point key="canvasLocation" x="173.5" y="-83"/>
+        </tableViewCell>
+    </objects>
+</document>
