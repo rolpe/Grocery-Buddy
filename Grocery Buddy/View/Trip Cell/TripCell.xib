@@ -19,24 +19,22 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNp-KP-iyE" userLabel="Date">
-                        <rect key="frame" x="20" y="61" width="61.5" height="29.5"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                        <rect key="frame" x="20" y="63" width="54" height="26"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCc-Q6-oRh" userLabel="Cost">
-                        <rect key="frame" x="379.5" y="61" width="61.5" height="29.5"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                        <rect key="frame" x="387" y="63" width="54" height="26"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="JCc-Q6-oRh" secondAttribute="bottom" constant="50.5" id="1C6-T0-1up"/>
                     <constraint firstItem="hNp-KP-iyE" firstAttribute="leading" secondItem="xRD-lZ-10H" secondAttribute="leadingMargin" id="P9f-ox-Np6"/>
-                    <constraint firstItem="JCc-Q6-oRh" firstAttribute="top" secondItem="xRD-lZ-10H" secondAttribute="topMargin" constant="50" id="Q5k-yI-DLk"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hNp-KP-iyE" secondAttribute="bottom" constant="50.5" id="hAb-Wv-4Zx"/>
-                    <constraint firstItem="hNp-KP-iyE" firstAttribute="top" secondItem="xRD-lZ-10H" secondAttribute="topMargin" constant="50" id="uWY-lh-nQE"/>
+                    <constraint firstItem="hNp-KP-iyE" firstAttribute="centerY" secondItem="xRD-lZ-10H" secondAttribute="centerY" id="crX-zo-IYs"/>
+                    <constraint firstItem="JCc-Q6-oRh" firstAttribute="centerY" secondItem="xRD-lZ-10H" secondAttribute="centerY" id="iZa-ka-M30"/>
                     <constraint firstItem="JCc-Q6-oRh" firstAttribute="trailing" secondItem="xRD-lZ-10H" secondAttribute="trailingMargin" id="wSN-ht-EgG"/>
                 </constraints>
             </tableViewCellContentView>

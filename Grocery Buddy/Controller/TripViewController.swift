@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class TripViewController: UITableViewController {
+class TripViewController: SwipeTableViewController {
     
     lazy var realm = try! Realm()
     let formatter = DateFormatter()
@@ -19,9 +19,8 @@ class TripViewController: UITableViewController {
     override func viewDidLoad() {
 
         print(realm.configuration.fileURL!)
-        
+        tableView.register(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "Cell")
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "TripCell")
         formatter.dateStyle = .long
         
         loadTrips()
@@ -30,7 +29,7 @@ class TripViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TripCell", for: indexPath) as! TripCell
+        let cell = super.tableView(tableView, cellForRowAt: indexPath) as! TripCell
         
         if let trip = trips?[indexPath.row] {
             cell.costLabel.text = trip.cost.cleanValue
@@ -66,6 +65,19 @@ class TripViewController: UITableViewController {
         let newTrip = Trip()
         saveTrip(trip: newTrip)
         
+    }
+    
+    override func updateModel(indexPath: IndexPath) {
+        if let trip = trips?[indexPath.row] {
+            do {
+                try realm.write {
+                    realm.delete(trip.items)
+                    realm.delete(trip)
+                }
+            } catch {
+                print("Error deleting trip: \(error)")
+            }
+        }
     }
     
 }

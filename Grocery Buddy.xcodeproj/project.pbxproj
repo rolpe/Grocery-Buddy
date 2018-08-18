@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6946467A2128CE4700024890 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694646792128CE4700024890 /* SwipeTableViewController.swift */; };
 		6976058021225B3F00C91BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6976057F21225B3F00C91BB6 /* AppDelegate.swift */; };
 		6976058521225B3F00C91BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6976058321225B3F00C91BB6 /* Main.storyboard */; };
 		6976058721225B4100C91BB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6976058621225B4100C91BB6 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		09A17002DAAC4D3396B70596 /* Pods-Grocery Buddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery Buddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Grocery Buddy/Pods-Grocery Buddy.release.xcconfig"; sourceTree = "<group>"; };
+		694646792128CE4700024890 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		6976057C21225B3F00C91BB6 /* Grocery Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grocery Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6976057F21225B3F00C91BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6976058421225B3F00C91BB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				6976059621263C0E00C91BB6 /* TripViewController.swift */,
+				694646792128CE4700024890 /* SwipeTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				6976059721263C0E00C91BB6 /* TripViewController.swift in Sources */,
 				6976059221225B6300C91BB6 /* Item.swift in Sources */,
 				6976058021225B3F00C91BB6 /* AppDelegate.swift in Sources */,
+				6946467A2128CE4700024890 /* SwipeTableViewController.swift in Sources */,
 				6976059D21263F3900C91BB6 /* TripCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
