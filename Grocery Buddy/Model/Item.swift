@@ -12,6 +12,7 @@ import RealmSwift
 class Item: Object {
     @objc dynamic var name: String = ""
     @objc private dynamic var priceInCents: Double = 0
+    var trip = LinkingObjects(fromType: Trip.self, property: "items")
     
     var price: Double {
         get {

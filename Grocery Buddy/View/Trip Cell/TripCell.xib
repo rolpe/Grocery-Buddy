@@ -32,9 +32,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hNp-KP-iyE" firstAttribute="centerY" secondItem="xRD-lZ-10H" secondAttribute="centerY" id="CvI-qt-s4j"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="JCc-Q6-oRh" secondAttribute="bottom" constant="50.5" id="1C6-T0-1up"/>
                     <constraint firstItem="hNp-KP-iyE" firstAttribute="leading" secondItem="xRD-lZ-10H" secondAttribute="leadingMargin" id="P9f-ox-Np6"/>
-                    <constraint firstItem="JCc-Q6-oRh" firstAttribute="centerY" secondItem="xRD-lZ-10H" secondAttribute="centerY" id="c4V-gZ-V20"/>
+                    <constraint firstItem="JCc-Q6-oRh" firstAttribute="top" secondItem="xRD-lZ-10H" secondAttribute="topMargin" constant="50" id="Q5k-yI-DLk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hNp-KP-iyE" secondAttribute="bottom" constant="50.5" id="hAb-Wv-4Zx"/>
+                    <constraint firstItem="hNp-KP-iyE" firstAttribute="top" secondItem="xRD-lZ-10H" secondAttribute="topMargin" constant="50" id="uWY-lh-nQE"/>
                     <constraint firstItem="JCc-Q6-oRh" firstAttribute="trailing" secondItem="xRD-lZ-10H" secondAttribute="trailingMargin" id="wSN-ht-EgG"/>
                 </constraints>
             </tableViewCellContentView>
