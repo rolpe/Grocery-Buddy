@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="pY3-hx-1wh" kind="show" identifier="goToTrip" id="JjO-bi-Idl"/>
+                                    <segue destination="pY3-hx-1wh" kind="show" identifier="goToTrip" id="KDv-ug-HZS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -46,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="3114.4000000000001" y="-154.27286356821591"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Items-->
         <scene sceneID="IKg-bP-LCR">
             <objects>
-                <tableViewController id="pY3-hx-1wh" sceneMemberID="viewController">
+                <tableViewController id="pY3-hx-1wh" customClass="ItemListViewController" customModule="Grocery_Buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D8Q-QP-e5y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,6 +69,15 @@
                             <outlet property="delegate" destination="pY3-hx-1wh" id="GpY-CS-YwK"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Items" id="eHL-O2-zCS" userLabel="Items">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="svD-cP-UPG">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="pY3-hx-1wh" id="yBz-74-QsB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRY-Rw-MpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class TripViewController: SwipeTableViewController {
     
@@ -19,8 +20,8 @@ class TripViewController: SwipeTableViewController {
     override func viewDidLoad() {
 
         print(realm.configuration.fileURL!)
-        tableView.register(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "Cell")
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "Cell")
         formatter.dateStyle = .long
         
         loadTrips()
@@ -41,6 +42,18 @@ class TripViewController: SwipeTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trips?.count ?? 1
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToTrip", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ItemListViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.currentTrip = trips?[indexPath.row]
+        }
     }
     
     func loadTrips() {

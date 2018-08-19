@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 class Trip: Object {
-    
     @objc dynamic var tripDate = Date()
     @objc private dynamic var costInCents: Double = 0
     let items = List<Item>()
