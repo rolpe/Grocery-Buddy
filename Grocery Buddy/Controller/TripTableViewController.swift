@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import ChameleonFramework
 
-class TripViewController: SwipeTableViewController {
+class TripTableViewController: SwipeTableViewController {
     
     lazy var realm = try! Realm()
     let formatter = DateFormatter()
@@ -49,7 +49,7 @@ class TripViewController: SwipeTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ItemListViewController
+        let destinationVC = segue.destination as! ItemViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.currentTrip = trips?[indexPath.row]

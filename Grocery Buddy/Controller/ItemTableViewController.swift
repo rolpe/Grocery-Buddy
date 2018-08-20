@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import ChameleonFramework
 
-class ItemListViewController: SwipeTableViewController {
+class ItemTableViewController: SwipeTableViewController {
     
     lazy var realm = try! Realm()
     
@@ -93,5 +93,17 @@ class ItemListViewController: SwipeTableViewController {
     func loadItems() {
         items = currentTrip?.items.sorted(byKeyPath: "name", ascending: true)
         tableView.reloadData()
+    }
+    
+    override func updateModel(indexPath: IndexPath) {
+        if let item = items?[indexPath.row] {
+            do {
+                try realm.write {
+                    realm.delete(item)
+                }
+            } catch {
+                print("Error deleting item: \(error)")
+            }
+        }
     }
 }

@@ -5,13 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Trip View Controller-->
+        <!--Trip Table View Controller-->
         <scene sceneID="fhv-DC-JE6">
             <objects>
-                <tableViewController id="QTF-gG-Z4S" customClass="TripViewController" customModule="Grocery_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QTF-gG-Z4S" customClass="TripTableViewController" customModule="Grocery_Buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bDv-1L-aVf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,9 +25,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="pY3-hx-1wh" kind="show" identifier="goToTrip" id="KDv-ug-HZS"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -41,6 +39,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="NXI-UI-1JU" kind="show" identifier="goToTrip" id="xF0-gO-z1s"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RFV-oa-4lb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,9 +50,9 @@
         <!--Items-->
         <scene sceneID="IKg-bP-LCR">
             <objects>
-                <tableViewController id="pY3-hx-1wh" customClass="ItemListViewController" customModule="Grocery_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="pY3-hx-1wh" customClass="ItemTableViewController" customModule="Grocery_Buddy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D8Q-QP-e5y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="553"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -81,7 +82,57 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRY-Rw-MpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3884" y="-153.37331334332833"/>
+            <point key="canvasLocation" x="4951" y="-154"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Jtt-cR-DhK">
+            <objects>
+                <viewController id="NXI-UI-1JU" customClass="ItemViewController" customModule="Grocery_Buddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IuS-T6-R6b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMI-In-iCI">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.050980392159999999" green="0.36078431370000003" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Lqs-rb-2d7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="1" green="1" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QoE-bZ-OB6">
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
+                                <connections>
+                                    <segue destination="pY3-hx-1wh" kind="embed" identifier="embedItemsTable" id="CT3-kl-12b"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QoE-bZ-OB6" firstAttribute="trailing" secondItem="VpA-zs-vAK" secondAttribute="trailing" id="DGX-XA-KYC"/>
+                            <constraint firstItem="sMI-In-iCI" firstAttribute="trailing" secondItem="VpA-zs-vAK" secondAttribute="trailing" id="Fn8-eH-Hc0"/>
+                            <constraint firstItem="sMI-In-iCI" firstAttribute="top" secondItem="QoE-bZ-OB6" secondAttribute="bottom" id="JXc-le-aWJ"/>
+                            <constraint firstItem="sMI-In-iCI" firstAttribute="bottom" secondItem="VpA-zs-vAK" secondAttribute="bottom" id="KU7-YD-k31"/>
+                            <constraint firstItem="QoE-bZ-OB6" firstAttribute="leading" secondItem="VpA-zs-vAK" secondAttribute="leading" id="Pmm-aw-WlS"/>
+                            <constraint firstItem="sMI-In-iCI" firstAttribute="leading" secondItem="VpA-zs-vAK" secondAttribute="leading" id="bFO-3t-SkA"/>
+                            <constraint firstItem="QoE-bZ-OB6" firstAttribute="top" secondItem="VpA-zs-vAK" secondAttribute="top" id="cqY-ql-JJ3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VpA-zs-vAK"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="ddd-1a-yCD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wtO-01-BIU">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="NXI-UI-1JU" id="bex-yP-ybf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pR3-sh-4DY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4008.8000000000002" y="-154.27286356821591"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wz0-p2-YSd">
