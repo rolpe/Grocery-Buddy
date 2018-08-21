@@ -102,6 +102,9 @@
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="1" green="1" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="NXI-UI-1JU" eventType="touchUpInside" id="O62-W5-kkh"/>
+                                </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QoE-bZ-OB6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="553"/>

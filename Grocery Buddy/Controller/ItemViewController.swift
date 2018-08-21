@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class ItemViewController: UIViewController {
+    
+    lazy var realm = try! Realm()
     
     var currentTrip: Trip?
     
@@ -30,4 +34,31 @@ class ItemViewController: UIViewController {
 
     }
     
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Enter Total Cost", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Cost", style: .default) { (action) in
+            if let trip = self.currentTrip {
+                do {
+                    try self.realm.write {
+                        trip.cost = Double(textField.text ?? "") ?? 0
+                    }
+                } catch {
+                    print("Error saving cost: \(error)")
+                }
+            }
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Enter total cost"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
 }
