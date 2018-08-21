@@ -13,11 +13,14 @@ import RealmSwift
 class ItemViewController: UIViewController {
     
     lazy var realm = try! Realm()
-    
+    @IBOutlet weak var costLabel: UILabel!
     var currentTrip: Trip?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let trip = currentTrip {
+            costLabel.text = trip.cost.cleanValue
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -48,6 +51,7 @@ class ItemViewController: UIViewController {
                 } catch {
                     print("Error saving cost: \(error)")
                 }
+                self.costLabel.text = trip.cost.cleanValue
             }
         }
         
