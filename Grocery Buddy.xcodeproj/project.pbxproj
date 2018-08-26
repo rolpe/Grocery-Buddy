@@ -19,6 +19,9 @@
 		6976059721263C0E00C91BB6 /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6976059621263C0E00C91BB6 /* TripTableViewController.swift */; };
 		6976059D21263F3900C91BB6 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6976059B21263F3900C91BB6 /* TripCell.swift */; };
 		6976059E21263F3900C91BB6 /* TripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6976059C21263F3900C91BB6 /* TripCell.xib */; };
+		69ADDB39212CF387009B4A0A /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADDB38212CF387009B4A0A /* ChartViewController.swift */; };
+		69ADDB3D2131EACF009B4A0A /* XAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADDB3C2131EACF009B4A0A /* XAxisFormatter.swift */; };
+		69ADDB3F2131EADC009B4A0A /* YAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ADDB3E2131EADC009B4A0A /* YAxisFormatter.swift */; };
 		818F2B9BA59685F38649DFBF /* Pods_Grocery_Buddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2CB340AE15D54DCA1594981 /* Pods_Grocery_Buddy.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		6976059621263C0E00C91BB6 /* TripTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
 		6976059B21263F3900C91BB6 /* TripCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		6976059C21263F3900C91BB6 /* TripCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripCell.xib; sourceTree = "<group>"; };
+		69ADDB38212CF387009B4A0A /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		69ADDB3C2131EACF009B4A0A /* XAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XAxisFormatter.swift; sourceTree = "<group>"; };
+		69ADDB3E2131EADC009B4A0A /* YAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YAxisFormatter.swift; sourceTree = "<group>"; };
 		D2CB340AE15D54DCA1594981 /* Pods_Grocery_Buddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Grocery_Buddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECD054B2F0508FA47B7206E /* Pods-Grocery Buddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Grocery Buddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Grocery Buddy/Pods-Grocery Buddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,10 +81,10 @@
 		6976057E21225B3F00C91BB6 /* Grocery Buddy */ = {
 			isa = PBXGroup;
 			children = (
-				6976059921263DB900C91BB6 /* Controller */,
-				6976059821263D8800C91BB6 /* View */,
 				697605952122655300C91BB6 /* Model */,
-				6976057F21225B3F00C91BB6 /* AppDelegate.swift */,
+				6976059821263D8800C91BB6 /* View */,
+				6976059921263DB900C91BB6 /* Controller */,
+				69ADDB4021323855009B4A0A /* Supporting Files */,
 				6976058621225B4100C91BB6 /* Assets.xcassets */,
 				6976058B21225B4100C91BB6 /* Info.plist */,
 			);
@@ -111,6 +117,7 @@
 				6976059621263C0E00C91BB6 /* TripTableViewController.swift */,
 				694B2E27212A4E2000F05C22 /* ItemViewController.swift */,
 				6946467B2129DA6300024890 /* ItemTableViewController.swift */,
+				69ADDB38212CF387009B4A0A /* ChartViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -122,6 +129,16 @@
 				6976059C21263F3900C91BB6 /* TripCell.xib */,
 			);
 			path = "Trip Cell";
+			sourceTree = "<group>";
+		};
+		69ADDB4021323855009B4A0A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6976057F21225B3F00C91BB6 /* AppDelegate.swift */,
+				69ADDB3C2131EACF009B4A0A /* XAxisFormatter.swift */,
+				69ADDB3E2131EADC009B4A0A /* YAxisFormatter.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		8355D6746320A9B5FA20DDDE /* Frameworks */ = {
@@ -237,6 +254,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Grocery Buddy/Pods-Grocery Buddy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/ChartsRealm/ChartsRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
@@ -244,6 +263,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChartsRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
@@ -265,9 +286,12 @@
 				6946467C2129DA6300024890 /* ItemTableViewController.swift in Sources */,
 				6976059721263C0E00C91BB6 /* TripTableViewController.swift in Sources */,
 				6976059221225B6300C91BB6 /* Item.swift in Sources */,
+				69ADDB39212CF387009B4A0A /* ChartViewController.swift in Sources */,
 				6976058021225B3F00C91BB6 /* AppDelegate.swift in Sources */,
 				6946467A2128CE4700024890 /* SwipeTableViewController.swift in Sources */,
+				69ADDB3D2131EACF009B4A0A /* XAxisFormatter.swift in Sources */,
 				6976059D21263F3900C91BB6 /* TripCell.swift in Sources */,
+				69ADDB3F2131EADC009B4A0A /* YAxisFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@ target 'Grocery Buddy' do
   # Pods for Grocery Buddy
 
 pod 'RealmSwift'
+pod 'Charts'
+pod 'ChartsRealm'
 pod 'SwipeCellKit'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/mapierce/Chameleon.git'
 

@@ -2,6 +2,12 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - Charts (3.1.1):
+    - Charts/Core (= 3.1.1)
+  - Charts/Core (3.1.1)
+  - ChartsRealm (3.1.1):
+    - Charts (~> 3.1.1)
+    - RealmSwift (~> 3.7.1)
   - Realm (3.7.6):
     - Realm/Headers (= 3.7.6)
   - Realm/Headers (3.7.6)
@@ -11,11 +17,15 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/mapierce/Chameleon.git`)
+  - Charts
+  - ChartsRealm
   - RealmSwift
   - SwipeCellKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Charts
+    - ChartsRealm
     - Realm
     - RealmSwift
     - SwipeCellKit
@@ -31,10 +41,12 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Charts: 90a4d61da0f6e06684c591e3bcab11940fe61736
+  ChartsRealm: 35728e98e8d365a45c54fa7a1fa47663d2539887
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
   SwipeCellKit: cee9906e6d3a36e22ad1a852fba7f8fa0839d113
 
-PODFILE CHECKSUM: 5a074c6afb6afb8a420db6c8508003e25172659e
+PODFILE CHECKSUM: 5ea1f339530e8d22b0991992022a35c6a0f8d0cf
 
 COCOAPODS: 1.5.3

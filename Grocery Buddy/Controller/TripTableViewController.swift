@@ -80,7 +80,7 @@ class TripTableViewController: SwipeTableViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         let newTrip = Trip()
         saveTrip(trip: newTrip)
-        
+        tableView.scrollToRow(at: IndexPath(row: (trips?.count)! - 1, section: 0), at: .bottom, animated: true)
     }
     
     override func updateModel(indexPath: IndexPath) {
@@ -95,7 +95,6 @@ class TripTableViewController: SwipeTableViewController {
             }
         }
     }
-    
 }
 
 extension Double {

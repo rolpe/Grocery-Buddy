@@ -22,4 +22,5 @@ class Trip: Object {
             costInCents = newValue * 100
         }
     }
+    
 }

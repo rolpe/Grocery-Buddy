@@ -20,6 +20,11 @@ class ItemTableViewController: SwipeTableViewController {
         }
     }
     
+    let strikeEffect: [NSAttributedStringKey : Any] = [
+        NSAttributedStringKey.strikethroughStyle: NSUnderlineStyle.styleSingle.rawValue,
+        NSAttributedStringKey.strikethroughColor: UIColor(hexString: "FF6151")!,
+        ]
+    
     var items: Results<Item>?
 
     override func viewDidLoad() {
@@ -31,7 +36,15 @@ class ItemTableViewController: SwipeTableViewController {
         
         if let item = items?[indexPath.row] {
             cell.textLabel?.text = item.name
-            cell.accessoryType = item.done ? .checkmark : .none
+            if item.done == true {
+                cell.accessoryType = .checkmark
+                let strikeThrough = NSAttributedString(string: item.name, attributes: strikeEffect)
+                cell.textLabel?.attributedText = strikeThrough
+            } else {
+                cell.accessoryType = .none
+                cell.textLabel?.attributedText = NSAttributedString(string: item.name, attributes: nil)
+            }
+            cell.tintColor = UIColor(hexString: "FF6151")
         }
         
         return cell
@@ -53,7 +66,6 @@ class ItemTableViewController: SwipeTableViewController {
         }
         
         tableView.reloadData()
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

@@ -20,6 +20,9 @@ class ItemViewController: UIViewController {
         super.viewDidLoad()
         if let trip = currentTrip {
             costLabel.text = trip.cost.cleanValue
+            let df = DateFormatter()
+            df.dateStyle = .long
+            self.title = df.string(from: trip.tripDate)
         }
     }
     
@@ -52,6 +55,7 @@ class ItemViewController: UIViewController {
                     print("Error saving cost: \(error)")
                 }
                 self.costLabel.text = trip.cost.cleanValue
+                self.navigationController?.popViewController(animated: true)
             }
         }
         
