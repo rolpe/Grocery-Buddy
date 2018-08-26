@@ -43,6 +43,10 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         return options
     }
     
+    @objc func alertClose(gesture: UITapGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
     func updateModel(indexPath: IndexPath) {
         

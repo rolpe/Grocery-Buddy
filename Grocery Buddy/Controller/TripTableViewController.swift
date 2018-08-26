@@ -14,7 +14,9 @@ class TripTableViewController: SwipeTableViewController {
     
     lazy var realm = try! Realm()
     let formatter = DateFormatter()
-
+    
+    var alertDateTextField = UITextField()
+    
     var trips: Results<Trip>?
 
     override func viewDidLoad() {
@@ -23,6 +25,9 @@ class TripTableViewController: SwipeTableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "Cell")
         formatter.dateStyle = .long
+        
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
+        self.view.addGestureRecognizer(longGesture)
         
         loadTrips()
         
@@ -51,6 +56,57 @@ class TripTableViewController: SwipeTableViewController {
         performSegue(withIdentifier: "goToTrip", sender: self)
     }
     
+    @objc func longPress(_ guesture: UILongPressGestureRecognizer) {
+        if guesture.state == UIGestureRecognizerState.began {
+            let point = guesture.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: point) {
+                changeDate(indexPath: indexPath)
+            }
+        }
+    }
+    
+    func changeDate(indexPath: IndexPath) {
+        let datePicker = UIDatePicker()
+        
+        let alert = UIAlertController(title: "Change Trip Date", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Update Date", style: .default) { (action) in
+            if let trip = self.trips?[indexPath.row] {
+                do {
+                    try self.realm.write {
+                        trip.tripDate = datePicker.date
+                    }
+                } catch {
+                    print("Error changing date: \(error)")
+                }
+                self.tableView.reloadData()
+            }
+        }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Select Trip Date"
+            alertTextField.inputView = datePicker
+            alertTextField.text = self.formatter.string(from: datePicker.date)
+            self.alertDateTextField = alertTextField
+        }
+        
+        datePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+        datePicker.datePickerMode = .date
+        
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(gesture:))))
+        })
+    }
+    
+    @objc func datePickerChanged(picker:UIDatePicker) {
+        alertDateTextField.text = formatter.string(from: picker.date)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! ItemViewController
         
@@ -61,6 +117,7 @@ class TripTableViewController: SwipeTableViewController {
     
     func loadTrips() {
         trips = realm.objects(Trip.self)
+        trips = trips?.sorted(byKeyPath: "tripDate", ascending: true)
         tableView.reloadData()
     }
     
@@ -99,6 +156,6 @@ class TripTableViewController: SwipeTableViewController {
 
 extension Double {
     var cleanValue: String{
-        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "$%.0f", self) : String(format: "$%.2f", self)//
+        return String(format: "$%.2f", self)
     }
 }

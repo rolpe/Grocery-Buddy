@@ -30,6 +30,7 @@ class ItemTableViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
@@ -69,6 +70,7 @@ class ItemTableViewController: SwipeTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
@@ -98,7 +100,10 @@ class ItemTableViewController: SwipeTableViewController {
         
         alert.addAction(action)
         
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(gesture:))))
+        })
         
     }
     

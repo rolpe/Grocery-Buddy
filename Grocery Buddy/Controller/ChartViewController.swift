@@ -42,6 +42,7 @@ class ChartViewController: UIViewController {
 
     func updateChartData() {
         allTrips = realm.objects(Trip.self)
+        allTrips = allTrips?.sorted(byKeyPath: "tripDate", ascending: true)
         
         guard let trips = allTrips else {
             fatalError()

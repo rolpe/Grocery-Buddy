@@ -61,12 +61,20 @@ class ItemViewController: UIViewController {
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Enter total cost"
+            alertTextField.keyboardType = UIKeyboardType.decimalPad
             textField = alertTextField
         }
         
         alert.addAction(action)
         
-        present(alert, animated: true, completion: nil)
-        
+        present(alert, animated: true, completion: {
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(gesture:))))
+        })
     }
+    
+    @objc func alertClose(gesture: UITapGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
