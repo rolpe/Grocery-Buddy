@@ -21,9 +21,10 @@ class TripTableViewController: SwipeTableViewController {
 
     override func viewDidLoad() {
 
-        print(realm.configuration.fileURL!)
         super.viewDidLoad()
+        
         tableView.register(UINib(nibName: "TripCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
         formatter.dateStyle = .long
         
         let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_:)))
@@ -36,6 +37,8 @@ class TripTableViewController: SwipeTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
+    
+    //MARK: - TableView Data Source Methods
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! TripCell
@@ -52,9 +55,21 @@ class TripTableViewController: SwipeTableViewController {
         return trips?.count ?? 1
     }
     
+    //MARK: - Segue to Items View
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ItemViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.currentTrip = trips?[indexPath.row]
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToTrip", sender: self)
     }
+    
+    //MARK: - Date Change Methods
     
     @objc func longPress(_ guesture: UILongPressGestureRecognizer) {
         if guesture.state == UIGestureRecognizerState.began {
@@ -93,7 +108,6 @@ class TripTableViewController: SwipeTableViewController {
         datePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
         datePicker.datePickerMode = .date
         
-        
         alert.addAction(action)
         
         present(alert, animated: true, completion: {
@@ -106,14 +120,15 @@ class TripTableViewController: SwipeTableViewController {
         alertDateTextField.text = formatter.string(from: picker.date)
     }
     
+    //MARK: - Add New Trip
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ItemViewController
-        
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.currentTrip = trips?[indexPath.row]
-        }
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        let newTrip = Trip()
+        saveTrip(trip: newTrip)
+        tableView.scrollToRow(at: IndexPath(row: (trips?.count)! - 1, section: 0), at: .bottom, animated: true)
     }
+    
+    //Mark: - Data Manipulation Methods
     
     func loadTrips() {
         trips = realm.objects(Trip.self)
@@ -131,13 +146,6 @@ class TripTableViewController: SwipeTableViewController {
         }
         
         tableView.reloadData()
-    }
-    
-    
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        let newTrip = Trip()
-        saveTrip(trip: newTrip)
-        tableView.scrollToRow(at: IndexPath(row: (trips?.count)! - 1, section: 0), at: .bottom, animated: true)
     }
     
     override func updateModel(indexPath: IndexPath) {

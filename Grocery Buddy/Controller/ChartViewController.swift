@@ -17,6 +17,7 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var lineChart: LineChartView!
     @IBOutlet weak var averageLabel: UILabel!
     
+    //Use calander to get start of day to negate timestamp effect
     var calendar = Calendar.current
     
     lazy var realm = try! Realm()
@@ -39,6 +40,8 @@ class ChartViewController: UIViewController {
         updateChartData()
         updateAverage()
     }
+    
+    //MARK: - Chart Methods
 
     func updateChartData() {
         allTrips = realm.objects(Trip.self)
@@ -83,6 +86,8 @@ class ChartViewController: UIViewController {
         lineChart.leftAxis.drawLabelsEnabled = true
         lineChart.extraRightOffset = 20
     }
+    
+    //MARK: - Calculate Average
     
     func updateAverage() {
         if let average: Double = allTrips?.average(ofProperty: "costInCents") {

@@ -31,6 +31,7 @@ class ItemTableViewController: SwipeTableViewController {
         super.viewDidLoad()
     }
     
+    //MARK: - TableView Data Source Methods
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
@@ -47,13 +48,14 @@ class ItemTableViewController: SwipeTableViewController {
             }
             cell.tintColor = UIColor(hexString: "FF6151")
         }
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items?.count ?? 1
     }
+    
+    //MARK - TableView Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let item = items?[indexPath.row] {
@@ -65,11 +67,11 @@ class ItemTableViewController: SwipeTableViewController {
                 print("Error changing done property: \(error)")
             }
         }
-        
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //MARK: - Add New Item
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
@@ -95,6 +97,7 @@ class ItemTableViewController: SwipeTableViewController {
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "Add New Item"
+            alertTextField.autocapitalizationType = .sentences
             textField = alertTextField
         }
         
@@ -104,8 +107,9 @@ class ItemTableViewController: SwipeTableViewController {
             alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertClose(gesture:))))
         })
-        
     }
+    
+    //Mark: - Data Manipulation Methods
     
     func loadItems() {
         items = currentTrip?.items.sorted(byKeyPath: "name", ascending: true)

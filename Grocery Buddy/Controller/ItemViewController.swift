@@ -18,6 +18,8 @@ class ItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Set up title and cost label
         if let trip = currentTrip {
             costLabel.text = trip.cost.cleanValue
             let df = DateFormatter()
@@ -26,6 +28,7 @@ class ItemViewController: UIViewController {
         }
     }
     
+    //MARK: - Embedded TableView Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! ItemTableViewController
         if let trip = currentTrip {
@@ -39,6 +42,8 @@ class ItemViewController: UIViewController {
         }
 
     }
+    
+    //MARK: - Done Button Functionality
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         var textField = UITextField()
